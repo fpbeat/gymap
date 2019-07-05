@@ -1,0 +1,29 @@
+<div data-dom="container" data-text-remove="Удалить привязку ?">
+    <div class="gymap-binding-points-flexible">
+        <div>
+            <div class="gymap-binding-point">
+                <span>{{ char }}</span>
+                <input type="text" data-dom="name" value="{{ name }}" autocomplete="off">
+            </div>
+        </div>
+
+        <div>
+            <div class="gymap-binding-point">
+                <input type="text" data-dom="video" value="-" readonly>
+            </div>
+        </div>
+
+        <div>
+            <div class="gymap-binding-point">
+                <input type="text" data-dom="map" data-text-distance="{distance} км." value="-" readonly>
+                <a href="javascript:void(0)" data-dom="remove"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="gymap-binding-point-control">
+        <a href="javascript:void(0)" data-dom="make-binding" data-text-bind="привязать" data-text-unbind="отвязать" data-text-no-map-routed="Сначала проложите маршрут" data-text-no-video-loaded="Видео еще не загружено" data-text-already-present="Такая привязка уже создана">привязать</a>
+        <a href="javascript:void(0)" {% if unbinded %} class="gymap-binding-control-disabled" {% endif %} data-text-no-seek="Не удалось получить время видео" data-dom="seek-video">перейти к видео</a>
+        <a href="javascript:void(0)" {% if unbinded %} class="gymap-binding-control-disabled" {% endif %} data-text-no-seek="Не удалось получить координаты точки" data-dom="seek-map">перейти к карте</a>
+    </div>
+</div>

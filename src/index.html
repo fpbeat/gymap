@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>video map</title>
+</head>
+<body>
+
+<input type="button" class="button" value="Открыть редактор" style="margin: 50px; padding: 8px 25px">
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        new videoMapBuilder('.button', {
+            onClose: function (data) {
+                localStorage.setItem('gymap', JSON.stringify(data));
+            },
+            videoID: 'zlNlkwB27lU',
+            data: JSON.parse(localStorage.getItem('gymap')) || {},
+        });
+    });
+</script>
+
+</body>
+</html>

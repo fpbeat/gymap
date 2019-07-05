@@ -1,0 +1,51 @@
+.gymap-container-left-controls {
+    background-color: #f7f7f7;
+    border: 1px solid transparent;
+    border-top-color: #e2e2e2;
+    border-bottom-color: #d6d6d6;
+
+    .gymap-controls-bar {
+        padding: 11px 0 10px 23px;
+        min-width: 450px;
+        .clearfix();
+
+        > div {
+            &:first-child {
+                float: left;
+            }
+
+            &:last-child {
+                margin-right: 20px;
+                float: right;
+            }
+        }
+
+        input {
+            color: #4b4b4b;
+            font-size: 12px;
+            padding: 5px 10px 4px 10px;
+            margin-left: 3px;
+
+            border-width: 0;
+            border-radius: 3px;
+            background: linear-gradient(to top, #e7e7e7 0%, #e3e3e3 100%);
+
+            border-bottom: 3px solid #c1c1c1;
+            cursor: pointer;
+
+            transition: border-bottom-color 0.2s ease, background 0.2s ease;
+
+            &:hover, &.gymap-active {
+                border-bottom-color: #828282;
+            }
+
+            &.gymap-active {
+                background: linear-gradient(to top, #e7e7e7 0%, #dcdcdc 100%);
+            }
+
+            &:first-child {
+                margin-left: 0 !important;
+            }
+        }
+    }
+}

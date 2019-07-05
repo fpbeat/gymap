@@ -1,0 +1,146 @@
+@import 'extras/mixins.less';
+@import 'extras/autocomplete.less';
+@import 'extras/split.less';
+@import 'extras/swal.less';
+@import 'extras/scrollbar.less';
+@import (reference) 'components/map.less';
+@import (reference) 'components/direction.less';
+@import (reference) 'components/video.less';
+@import (reference) 'components/controls.less';
+@import (reference) 'components/binding.less';
+@import (reference) 'components/popup.less';
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 12px;
+}
+
+
+.gymap, .gymap * {
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+}
+
+.gymap {
+    &:extend(.gymap-popup all);
+
+    .gymap-container {
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+        justify-content: center;
+        color: #858585;
+
+        &.gymap-loaded {
+            align-items: initial;
+            justify-content: initial;
+            color: initial;
+        }
+
+        .gymap-sortable-ghost {
+            visibility: hidden;
+        }
+
+        .gymap-component-loading {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+
+            text-align: center;
+            color: #858585;
+        }
+
+        a {
+            text-decoration: none;
+            color: #7c7c7c;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        h5 {
+            font-size: 14px;
+            font-weight: normal;
+            margin: 15px 0 8px 2px;
+            text-align: left;
+
+            color: #818181;
+
+            background: inline-svg('/arrow-down.svg', 'arrow-down-icon', 'fill: #999999') no-repeat 1px 4px;
+            background-size: 13px auto;
+            padding-left: 20px;
+
+            span {
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+
+        .hidden {
+            display: none !important;
+        }
+
+        .gymap-container-left {
+            .gymap-container-left-binding {
+                &:extend(.gymap-container-left-binding all);
+
+                .gymap-binding-point {
+                    &:extend(.gymap-container-right-direction .gymap-direction-point all);
+                }
+            }
+
+
+
+            .gymap-container-left-second {
+                position: relative;
+                overflow: hidden;
+
+                .gymap-component-loading {
+                    position: absolute;
+                    margin-top: 25px;
+                    width: 100%;
+                }
+
+                .gymap-container-left-controls {
+                    &:extend(.gymap-container-left-controls all);
+                }
+
+                .gymap-container-left-video {
+                    &:extend(.gymap-container-left-video all);
+                }
+            }
+        }
+
+        .gymap-container-right {
+            .gymap-container-right-direction {
+                &:extend(.gymap-container-right-direction all);
+            }
+
+            .gymap-container-right-map {
+                &:extend(.gymap-container-right-map all);
+            }
+        }
+    }
+}
+
+@keyframes gymap-popup-container-animation {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

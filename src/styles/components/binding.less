@@ -1,0 +1,97 @@
+.gymap-container-left-binding {
+    position: relative;
+    width: 100%;
+
+    overflow: hidden;
+    padding: 0 40px 10px 23px;
+
+    .gymap-binding-no-points {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
+        text-align: center;
+        color: #858585;
+    }
+
+    .gymap-binding-points {
+        position: relative;
+
+        div[data-binded] {
+            span {
+                background-color: #dddddd;
+            }
+
+            .gymap-binding-point-control a:first-child {
+                color: #ca0000;
+            }
+        }
+
+        .gymap-binding-points-flexible {
+            display: flex;
+
+            > div {
+                margin-left: 20px;
+
+                &:not(:first-child) {
+                    width: 80px;
+
+                    input {
+                        padding: 0;
+                        text-align: center;
+                        pointer-events: none;
+                        background-color: #f5f5f5;
+                        color: #6d6d6d;
+                    }
+                }
+
+                &:first-child {
+                    margin-left: 0;
+                    flex: 1;
+
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .gymap-binding-point-control {
+            margin-top: -5px;
+
+            margin-bottom: 20px;
+
+            a {
+                margin-left: 12px;
+                color: #888888;
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    left: -8px;
+                    top: 3px;
+                    content: "";
+                    height: 12px;
+                    width: 0;
+                    border-left: 1px solid #a9a9a9;
+                }
+
+                &:first-child {
+                    color: #00986d;
+                    margin-left: 0;
+
+                    &:after {
+                        display: none;
+                    }
+
+                }
+
+                &.gymap-binding-control-disabled {
+                    cursor: not-allowed;
+                    text-decoration: none !important;
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+}

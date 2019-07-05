@@ -1,0 +1,35 @@
+@import (css) '~sweetalert2/dist/sweetalert2.css';
+
+body.swal2-shown {
+    overflow: auto !important;
+}
+
+.gymap {
+    .swal2-open-animation {
+        animation: swal2-show-animation .3s ease;
+    }
+
+    .swal2-container {
+        .swal2-content {
+            padding: 14px 0 7px 0;
+            font-size: 16px;
+        }
+
+        .swal2-actions button {
+            padding: 0.725em 3em;
+        }
+    }
+}
+
+
+@keyframes swal2-show-animation {
+    0% {
+        opacity: 0.5;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

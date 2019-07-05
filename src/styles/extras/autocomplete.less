@@ -1,0 +1,31 @@
+.pac-container {
+    z-index: 10002;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 6px;
+
+    .pac-item {
+        border-top-width: 0;
+        margin-left: -6px;
+
+        font-family: Verdana, sans-serif !important;
+        font-size: 11px;
+
+        .pac-item-query {
+            font-size: 12px;
+        }
+
+        &:hover, &.pac-item-selected {
+            background: #EEE data-uri('custom-select-hover-item.png') repeat-y !important;
+        }
+
+        .pac-icon {
+            margin-left: 6px;
+            margin-right: 8px;
+        }
+    }
+
+    &:after {
+        display: none;
+    }
+}

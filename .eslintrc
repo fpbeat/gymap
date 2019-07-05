@@ -1,0 +1,24 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "rules": {
+    "semi": 2,
+    "babel/object-curly-spacing": 1,
+    "babel/semi": 1,
+    "babel/no-unused-expressions": ["error", {
+      "allowTernary": true,
+      "allowShortCircuit": true
+    }],
+    "babel/valid-typeof": 1
+  },
+  "plugins": [
+    "babel"
+  ]
+}
