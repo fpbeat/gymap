@@ -6,9 +6,9 @@ import EventEmitter from 'events';
 import {Base64} from 'js-base64';
 
 import PopupComponent from '~/js/app/components/popup/index';
-import GYMap from '~/js/app/gymap';
+import GYMapContainer from '~/js/app/gymap';
 
-window.videoMapBuilder = class extends EventEmitter {
+class Gymap extends EventEmitter {
     options = {
         videoID: null,
         data: {
@@ -67,24 +67,24 @@ window.videoMapBuilder = class extends EventEmitter {
     }
 
     bootstrap() {
-        this.gymap = new GYMap(this.options);
+        this.gymapContainer = new GYMapContainer(this.options);
 
         this.popup = new PopupComponent(this.button, {
             onOpen: element => {
-                this.gymap.initialize(element);
+                this.gymapContainer.initialize(element);
 
                 this.emit('open');
             },
             onClose: () => {
-                let data = this.gymap.getData();
+                let data = this.gymapContainer.getData();
                 ElementUtil.set(this.input, 'value', Base64.encode(JSON.stringify(data)));
 
                 this.emit('close', data);
             },
-            onDimensionsChanged: () => this.gymap.getContainer().emit('resize', null)
+            onDimensionsChanged: () => this.gymapContainer.getContainer().emit('resize', null)
         });
 
-        this.gymap.on('controllClickFullscreen', this.popup.toggleFullScreen.bind(this.popup));
+        this.gymapContainer.on('controllClickFullscreen', this.popup.toggleFullScreen.bind(this.popup));
     }
 
     createInput() {
@@ -107,4 +107,9 @@ window.videoMapBuilder = class extends EventEmitter {
             });
         }
     }
+}
+
+export default {
+    version: VERSION,
+    create: (element, options) => new Gymap(element, options)
 };

@@ -10,6 +10,10 @@ module.exports = {
     output: {
         path: Path.join(__dirname, '../build'),
         filename: 'js/[name].bundle.js',
+
+        libraryExport: 'default',
+        libraryTarget: 'var',
+        library: 'Gymap'
     },
     plugins: [
         new CleanWebpackPlugin(),

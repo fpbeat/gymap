@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
-        new videoMapBuilder('.button', {
+        Gymap.create('.button', {
             onClose: function (data) {
                 localStorage.setItem('gymap', JSON.stringify(data));
             },

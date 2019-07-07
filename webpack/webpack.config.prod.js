@@ -1,14 +1,15 @@
+const pkg = require("../package.json");
+
 const Path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const Merge = require('webpack-merge');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const LessPluginInlineSvg = require('less-plugin-inline-svg');
-const common = require('./webpack.common.js');
 
-module.exports = merge(common, {
+module.exports = Merge(require('./webpack.common.js'), {
     mode: 'production',
     optimization: {
         minimizer: [
@@ -22,14 +23,12 @@ module.exports = merge(common, {
     devtool: false,
     stats: 'errors-only',
     bail: true,
-    output: {
-        filename: 'js/[name].bundle.js',
-    },
 
     plugins: [
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            NAMESPACE: JSON.stringify(require("../package.json").name)
+            NAMESPACE: JSON.stringify(pkg.name),
+            VERSION: JSON.stringify(pkg.version)
         }),
         new Webpack.optimize.ModuleConcatenationPlugin(),
         new MiniCssExtractPlugin({
@@ -54,8 +53,7 @@ module.exports = merge(common, {
                         ],
                         plugins: [
                             new LessPluginInlineSvg({
-                                base64: true,
-                                basePath: Path.resolve(__dirname, '../images')
+                                base64: true
                             })
                         ]
                     }
