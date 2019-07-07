@@ -6,12 +6,8 @@ export default class {
         showCloseButton: true,
         showCancelButton: false,
         scrollbarPadding: false,
-        animation: false,
-        heightAuto:false,
-        onClose: swal => swal.classList.remove('swal2-open-animation'),
-        customClass: {
-            popup: 'swal2-open-animation'
-        }
+        animation: true,
+        heightAuto: false
     };
 
     static confirm(text, options = {}) {
